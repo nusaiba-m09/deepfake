@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NeuralForensics NSU // Cyber Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css?v=20260713-responsive-3" />
+  </head>
+  <body>
+    <div class="app-shell app-state-neutral" id="appShell">
+      <div class="ambient-grid"></div>
+      <div class="ambient-aurora ambient-aurora-left" aria-hidden="true"></div>
+      <div class="ambient-aurora ambient-aurora-right" aria-hidden="true"></div>
+
+      <header class="hero panel">
+        <div class="hero-copy-block">
+          <p class="eyebrow">North South University // Cyber Security Research Area</p>
+          <h1>NeuralForensics NSU // Cyber Lab</h1>
+          <p class="hero-copy">
+            Forensic detection of manipulated identity media using biometric, temporal, and
+            generative anomaly signals across live camera frames and uploaded video evidence.
+          </p>
+          <div class="hero-badges">
+            <span class="badge" id="modeBadge">FORENSIC DETECTION</span>
+            <span class="badge badge-outline" id="statusBadge">READY</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="visual-ring ring-outer"></div>
+          <div class="visual-ring ring-mid"></div>
+          <div class="visual-ring ring-inner"></div>
+          <div class="face-grid">
+            <span class="face-line line-1"></span>
+            <span class="face-line line-2"></span>
+            <span class="face-line line-3"></span>
+            <span class="face-line line-4"></span>
+            <span class="face-line line-5"></span>
+            <span class="face-node node-1"></span>
+            <span class="face-node node-2"></span>
+            <span class="face-node node-3"></span>
+            <span class="face-node node-4"></span>
+            <span class="face-node node-5"></span>
+            <span class="face-node node-6"></span>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <section class="panel media-panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">Neural Analysis Viewport</p>
+              <h2 id="activeSourceTitle">Select an Input Source</h2>
+            </div>
+            <span class="viewport-state" id="viewportState">STANDBY</span>
+          </div>
+
+          <div class="media-stage" id="mediaStage">
+            <div class="stage-corners" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="face-target" aria-hidden="true">
+              <span class="target-axis target-axis-x"></span>
+              <span class="target-axis target-axis-y"></span>
+              <span class="target-point point-a"></span>
+              <span class="target-point point-b"></span>
+              <span class="target-point point-c"></span>
+              <span class="target-point point-d"></span>
+            </div>
+            <div class="stage-telemetry telemetry-top" aria-hidden="true">
+              <span>FACE REGION // LOCK</span><span>TEMPORAL BUFFER // 07</span>
+            </div>
+            <div class="stage-telemetry telemetry-bottom" aria-hidden="true">
+              <span>LUMA</span><i></i><span>TEXTURE</span><i></i><span>MOTION</span><i></i>
+            </div>
+            <video id="webcamVideo" autoplay muted playsinline hidden></video>
+            <video id="fileVideo" controls playsinline hidden></video>
+            <div class="stage-placeholder" id="stagePlaceholder">
+              <p>Detection surface armed.</p>
+              <span>Authorize the camera feed or load MP4 evidence to begin analysis.</span>
+            </div>
+            <div class="scan-line" id="scanLine" aria-hidden="true"></div>
+            <div class="terminal-overlay" id="terminalOverlay" aria-live="polite"></div>
+            <section class="scan-result" id="verdictPanel" aria-live="polite">
+              <div class="result-status">
+                <span class="result-index">SCAN RESULT</span>
+                <h2 id="verdictHeadline">Awaiting Scan</h2>
+                <p class="verdict-copy" id="verdictCopy">
+                  Select a source and execute the scan. The verdict will appear here.
+                </p>
+              </div>
+              <dl class="metrics result-metrics">
+                <div>
+                  <dt>Input</dt>
+                  <dd id="metricSource">Awaiting input</dd>
+                </div>
+                <div>
+                  <dt id="metricScoreLabel">Synthetic Likelihood</dt>
+                  <dd id="metricConfidence">--</dd>
+                </div>
+                <div>
+                  <dt>Analysis Method</dt>
+                  <dd id="metricEngine">Neural Matrix</dd>
+                </div>
+              </dl>
+            </section>
+          </div>
+
+          <div class="scan-command">
+            <button class="action-button primary scan-button" id="analyzeButton">
+              Select Camera or MP4 First
+            </button>
+            <div class="scan-command-meta">
+              <span>03 // ANALYSIS</span>
+              <p class="activity-status" id="activityStatus">System ready. Select an input source.</p>
+            </div>
+          </div>
+        </section>
+
+        <aside class="sidebar">
+          <section class="panel control-panel">
+            <div class="panel-head compact">
+              <div>
+                <p class="panel-kicker">01—02 // Input</p>
+                <h2>Choose Detection Source</h2>
+              </div>
+            </div>
+            <div class="model-selector" aria-label="Detection model">
+              <button class="model-button is-active" data-model="model1" type="button">
+                Detection Model 1
+              </button>
+              <button class="model-button" data-model="model2" type="button">
+                Detection Model 2
+              </button>
+            </div>
+            <div class="source-console">
+              <section class="source-option" id="liveSourceCard">
+                <div class="source-option-head">
+                  <span class="step-index">01</span>
+                  <div><strong>Live Camera</strong><small>3-second forensic capture</small></div>
+                </div>
+                <button class="action-button secondary" id="enableCameraButton">
+                  Enable Camera
+                </button>
+                <p class="inline-status" id="cameraStatus">Camera is currently off.</p>
+              </section>
+
+              <section class="source-option" id="fileSourceCard">
+                <div class="source-option-head">
+                  <span class="step-index">02</span>
+                  <div><strong>Upload Video</strong><small>MP4 timeline analysis</small></div>
+                </div>
+                <label class="drop-zone" id="dropZone" for="fileInput">
+                  <input id="fileInput" type="file" accept="video/mp4" hidden />
+                  <span class="drop-title">Choose MP4 File</span>
+                  <span class="drop-copy">Click here or drop video</span>
+                  <span class="drop-meta" id="fileMeta">No file selected</span>
+                </label>
+                <button class="action-button secondary" id="clearFileButton" hidden>
+                  Remove Video
+                </button>
+              </section>
+            </div>
+
+            <section class="sample-library">
+              <div class="sample-library-head">
+                <span>Verification Samples</span>
+                <small>Known synthetic videos</small>
+              </div>
+              <div class="sample-grid">
+                <button class="sample-button" type="button" data-sample="/NSU_Demo_Videos/01_02__hugging_happy__YVGY8LOK.mp4">
+                  <span>Sample 01</span><small>Facial interaction</small>
+                </button>
+                <button class="sample-button" type="button" data-sample="/NSU_Demo_Videos/01_02__meeting_serious__YVGY8LOK.mp4">
+                  <span>Sample 02</span><small>Meeting sequence</small>
+                </button>
+                <button class="sample-button" type="button" data-sample="/NSU_Demo_Videos/01_02__walk_down_hall_angry__YVGY8LOK.mp4">
+                  <span>Sample 03</span><small>Motion sequence</small>
+                </button>
+              </div>
+            </section>
+            <p class="control-copy">
+              Choose one source. The active input is highlighted and shown in the analysis viewport.
+            </p>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
