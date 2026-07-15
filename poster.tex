@@ -40,15 +40,15 @@
     \begin{column}{.7\paperwidth}
       \vskip2cm
       \centering
-      \usebeamercolor{title in headline}{\color{fg}\textbf{\fontsize{80}{95}\selectfont \inserttitle}\\[1ex]}
+      \usebeamercolor{title in headline}{\color{fg}\textbf{\fontsize{75}{100}\selectfont \inserttitle}\\[2ex]}
       \vskip1.5cm
       \usebeamercolor{author in headline}{\color{fg}\huge{\textbf{\insertauthor}}\\[1.5ex]}
       \usebeamercolor{institute in headline}{\color{fg}\Large{\insertinstitute}\\[1ex]}
       \vskip1.5cm
     \end{column}
     \begin{column}{.2\paperwidth}
-      \centering
-      \includegraphics[height=12cm]{logo.jpg}
+      \flushright
+      \includegraphics[height=8cm,keepaspectratio]{logo.jpg}\hspace*{2cm}
     \end{column}
   \end{columns}
   \vskip2cm
@@ -91,18 +91,18 @@
 \begin{column}{.31\paperwidth}
 \begin{block}{Problem Statement: The Deepfake Threat}
     \vspace{0.5cm}
-    \Large \textbf{The Context:} Rapid adoption of Mobile Financial Services (MFS) like bKash and Nagad in Bangladesh has introduced severe vulnerabilities to AI-driven fraud.
+    \Large \textbf{The Context:} The proliferation of hyper-realistic synthetic media poses severe threats across multiple sectors in Bangladesh and globally, from digital finance to public discourse.
     
-    \vspace{0.5cm}
-    \Large \textbf{The Challenge:} Deepfakes are actively used to bypass e-KYC liveness detection and impersonate officials or relatives, leading to massive financial scams. Standard biometric protocols are no longer sufficient against synthetic media.
-    \vspace{0.5cm}
+    \vspace{0.3cm}
+    \Large \textbf{The Challenge:} Deepfakes drive Mobile Financial Services (MFS) fraud (e.g., e-KYC bypass), political misinformation, identity theft, and non-consensual imagery. Standard security protocols are failing against these advanced AI threats.
+    \vspace{0.3cm}
     \begin{center}
-    \resizebox{0.9\linewidth}{!}{
+    \resizebox{0.65\linewidth}{!}{
         \begin{tikzpicture}[node distance=1.5cm and 2cm]
             \node (df) [circle, draw=neonmagenta, fill=bgblock, text=white, very thick, minimum size=5cm, align=center, drop shadow] {\Huge \textbf{DEEPFAKES}};
-            \node (threat1) [rectangle, draw=neoncyan, fill=bgdark, text=white, very thick, minimum width=6cm, minimum height=2cm, align=center, above right=of df, xshift=1cm] {\LARGE \textbf{e-KYC Bypass}};
-            \node (threat2) [rectangle, draw=neoncyan, fill=bgdark, text=white, very thick, minimum width=6cm, minimum height=2cm, align=center, right=of df, xshift=2cm] {\LARGE \textbf{MFS Fraud}};
-            \node (threat3) [rectangle, draw=neoncyan, fill=bgdark, text=white, very thick, minimum width=6cm, minimum height=2cm, align=center, below right=of df, xshift=1cm] {\LARGE \textbf{Impersonation}};
+            \node (threat1) [rectangle, draw=neoncyan, fill=bgdark, text=white, very thick, minimum width=6cm, minimum height=2cm, align=center, above right=of df, xshift=1cm] {\LARGE \textbf{Financial Fraud}};
+            \node (threat2) [rectangle, draw=neoncyan, fill=bgdark, text=white, very thick, minimum width=6cm, minimum height=2cm, align=center, right=of df, xshift=2cm] {\LARGE \textbf{Misinformation}};
+            \node (threat3) [rectangle, draw=neoncyan, fill=bgdark, text=white, very thick, minimum width=6cm, minimum height=2cm, align=center, below right=of df, xshift=1cm] {\LARGE \textbf{Identity Theft}};
             
             \draw [arrow, neonmagenta] (df) -- (threat1);
             \draw [arrow, neonmagenta] (df) -- (threat2);
@@ -110,7 +110,7 @@
         \end{tikzpicture}
     }
     \end{center}
-    \vspace{0.5cm}
+    \vspace{0.3cm}
 \end{block}
 
 \begin{block}{The Deep Learning Solution}
@@ -181,27 +181,27 @@
 % ==================== COLUMN 3 ====================
 \begin{column}{.31\paperwidth}
 \begin{block}{Attention-Based Artifact Detection}
-    \vspace{1cm}
+    \vspace{0.5cm}
     \begin{center}
-        \includegraphics[width=0.9\linewidth]{sleek_concept.jpg}
+        \includegraphics[width=0.85\linewidth]{sleek_concept.jpg}
     \end{center}
-    \vspace{1cm}
+    \vspace{0.5cm}
     \centering \Large \textit{Unlike macroscopic facial analysis, our Transformer-based model targets subtle spatial-temporal inconsistencies and boundary warping where generators fail.}
-    \vspace{1cm}
+    \vspace{0.5cm}
 \end{block}
 
 \begin{block}{Impact \& Future Scope}
     \vspace{0.5cm}
     \begin{itemize}
         \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Custom Lightweight Model:} Developing a highly optimized, resource-efficient proprietary model tailored for real-time mobile edge devices.
-        \vspace{0.5cm}
+        \vspace{0.3cm}
         \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Tackling Bangladesh-Specific Scams:} Extending detection to combat localized threats:
         \begin{itemize}
             \item[\textcolor{neonmagenta}{\textbf{--}}] \large Bypassing e-KYC and liveness detection in MFS (bKash, Nagad).
-            \item[\textcolor{neonmagenta}{\textbf{--}}] \large AI-synthesized audio/video impersonating bank officials for social engineering.
+            \item[\textcolor{neonmagenta}{\textbf{--}}] \large AI-synthesized audio/video impersonating officials for social engineering.
             \item[\textcolor{neonmagenta}{\textbf{--}}] \large Synthetic identity creation for fraudulent loan applications.
         \end{itemize}
-        \vspace{0.5cm}
+        \vspace{0.3cm}
         \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Multimodal Expansion:} Fusing audio and video analysis to detect deeply coordinated financial scams and restore digital trust.
     \end{itemize}
     \vspace{0.5cm}
