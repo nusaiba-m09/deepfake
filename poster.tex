@@ -40,7 +40,7 @@
     \begin{column}{.7\paperwidth}
       \vskip2cm
       \centering
-      \usebeamercolor{title in headline}{\color{fg}\textbf{\fontsize{75}{100}\selectfont \inserttitle}\\[2ex]}
+      \usebeamercolor{title in headline}{\color{fg}\textbf{\fontsize{60}{80}\selectfont \inserttitle}\\[2ex]}
       \vskip1.5cm
       \usebeamercolor{author in headline}{\color{fg}\huge{\textbf{\insertauthor}}\\[1.5ex]}
       \usebeamercolor{institute in headline}{\color{fg}\Large{\insertinstitute}\\[1ex]}
@@ -48,7 +48,7 @@
     \end{column}
     \begin{column}{.2\paperwidth}
       \flushright
-      \includegraphics[height=8cm,keepaspectratio]{logo.jpg}\hspace*{2cm}
+      \includegraphics[height=8cm,keepaspectratio]{logo.jpeg}\hspace*{2cm}
     \end{column}
   \end{columns}
   \vskip2cm
@@ -73,9 +73,9 @@
 
 % --- TIKZ FLOWCHART STYLES ---
 \tikzset{
-    process/.style={rectangle, draw=neoncyan, fill=bgdark, text=titletext, very thick, minimum width=8cm, minimum height=3cm, align=center, rounded corners, drop shadow},
-    decision/.style={diamond, draw=neonmagenta, fill=bgdark, text=titletext, very thick, minimum width=4cm, minimum height=4cm, align=center, drop shadow},
-    io/.style={trapezium, trapezium left angle=70, trapezium right angle=110, draw=neongreen, fill=bgdark, text=titletext, very thick, minimum width=8cm, minimum height=3cm, align=center, drop shadow},
+    process/.style={rectangle, draw=neoncyan, fill=bgdark, text=titletext, very thick, minimum width=8cm, minimum height=2cm, align=center, rounded corners, drop shadow},
+    decision/.style={diamond, draw=neonmagenta, fill=bgdark, text=titletext, very thick, minimum width=3cm, minimum height=3cm, align=center, drop shadow},
+    io/.style={trapezium, trapezium left angle=70, trapezium right angle=110, draw=neongreen, fill=bgdark, text=titletext, very thick, minimum width=8cm, minimum height=2cm, align=center, drop shadow},
     arrow/.style={-{Stealth[scale=1.5]}, neoncyan, thick, line width=2.5mm}
 }
 
@@ -90,11 +90,12 @@
 % ==================== COLUMN 1 ====================
 \begin{column}{.31\paperwidth}
 \begin{block}{Problem Statement: The Deepfake Threat}
-    \vspace{0.5cm}
-    \Large \textbf{The Context:} The proliferation of hyper-realistic synthetic media poses severe threats across multiple sectors in Bangladesh and globally, from digital finance to public discourse.
-    
     \vspace{0.3cm}
-    \Large \textbf{The Challenge:} Deepfakes drive Mobile Financial Services (MFS) fraud (e.g., e-KYC bypass), political misinformation, identity theft, and non-consensual imagery. Standard security protocols are failing against these advanced AI threats.
+    \begin{itemize}
+        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{The Context:} Synthetic media threatens digital finance, public discourse, and identity security in Bangladesh.
+        \vspace{0.2cm}
+        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{The Challenge:} Standard security protocols fail against advanced AI threats like MFS e-KYC bypass and political misinformation.
+    \end{itemize}
     \vspace{0.3cm}
     \begin{center}
     \resizebox{0.65\linewidth}{!}{
@@ -155,7 +156,7 @@
     \vspace{0.3cm}
     \begin{center}
     \resizebox{0.8\linewidth}{!}{
-        \begin{tikzpicture}[node distance=2.5cm and 2cm]
+        \begin{tikzpicture}[node distance=1.5cm and 2cm]
             \node (in) [io] {\textbf{Video Input} \\ (Raw Stream)};
             \node (sample) [process, below=of in] {\textbf{Frame Extraction} \\ (12 Distinct Frames)};
             \node (nn) [process, below=of sample] {\textbf{Transformer Model} \\ (Feature Extraction)};
@@ -191,20 +192,15 @@
 \end{block}
 
 \begin{block}{Impact \& Future Scope}
-    \vspace{0.5cm}
+    \vspace{0.3cm}
     \begin{itemize}
-        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Custom Lightweight Model:} Developing a highly optimized, resource-efficient proprietary model tailored for real-time mobile edge devices.
+        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Lightweight Model:} Resource-efficient proprietary model for mobile edge devices.
         \vspace{0.3cm}
-        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Tackling Bangladesh-Specific Scams:} Extending detection to combat localized threats:
-        \begin{itemize}
-            \item[\textcolor{neonmagenta}{\textbf{--}}] \large Bypassing e-KYC and liveness detection in MFS (bKash, Nagad).
-            \item[\textcolor{neonmagenta}{\textbf{--}}] \large AI-synthesized audio/video impersonating officials for social engineering.
-            \item[\textcolor{neonmagenta}{\textbf{--}}] \large Synthetic identity creation for fraudulent loan applications.
-        \end{itemize}
+        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Localized Threats:} Combating MFS e-KYC bypass, official impersonation, and fraudulent loans.
         \vspace{0.3cm}
-        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Multimodal Expansion:} Fusing audio and video analysis to detect deeply coordinated financial scams and restore digital trust.
+        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Multimodal Expansion:} Fusing audio-video analysis to detect coordinated scams.
     \end{itemize}
-    \vspace{0.5cm}
+    \vspace{0.3cm}
 \end{block}
 \end{column}
 
