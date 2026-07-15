@@ -80,8 +80,8 @@
 }
 
 \title{NEURALFORENSICS: DEEP LEARNING FOR DEEPFAKE DETECTION}
-\author{Cyber Security Lab}
-\institute{North South University}
+\author{Prof. Dr. Shazzad Hosain \quad Dr. Md Adnan Arefeen \quad Nusaiba Al Mullick}
+\institute{Dean of SEPS, NSU \quad $\mid$ \quad Assistant Professor, NSU \quad $\mid$ \quad NSU \\ North South University Cyber Security Center}
 
 \begin{document}
 \begin{frame}[fragile]
@@ -113,7 +113,7 @@
     \begin{center}
     \resizebox{0.9\linewidth}{!}{
         \begin{tikzpicture}[node distance=1.5cm and 1cm]
-            \node (cnn) [rectangle, draw=neongreen, fill=bgblock, text=white, very thick, minimum width=10cm, minimum height=3cm, align=center, drop shadow] {\Huge \textbf{PyTorch Meso4 CNN}};
+            \node (cnn) [rectangle, draw=neongreen, fill=bgblock, text=white, very thick, minimum width=10cm, minimum height=3cm, align=center, drop shadow] {\Huge \textbf{Transformer-Based Model}};
             \node (adv1) [rectangle, draw=neoncyan, fill=bgdark, text=white, very thick, minimum width=5cm, minimum height=2cm, align=center, below left=1.5cm and -2cm of cnn] {\Large \textbf{Automated Detection}};
             \node (adv2) [rectangle, draw=neoncyan, fill=bgdark, text=white, very thick, minimum width=5cm, minimum height=2cm, align=center, below=2cm of cnn] {\Large \textbf{Sub-pixel Precision}};
             \node (adv3) [rectangle, draw=neoncyan, fill=bgdark, text=white, very thick, minimum width=5cm, minimum height=2cm, align=center, below right=1.5cm and -2cm of cnn] {\Large \textbf{100\% Local/Secure}};
@@ -130,7 +130,7 @@
 \begin{block}{Neural Architecture}
     \vspace{1cm}
     \begin{center}
-        \includegraphics[width=0.9\linewidth]{architecture.png}
+        \includegraphics[width=0.9\linewidth]{sleek_diagram.jpg}
     \end{center}
     \vspace{0.5cm}
 \end{block}
@@ -145,7 +145,7 @@
         \begin{tikzpicture}[node distance=2.5cm and 2cm]
             \node (in) [io] {\textbf{Video Input} \\ (Raw Stream)};
             \node (sample) [process, below=of in] {\textbf{Frame Extraction} \\ (12 Distinct Frames)};
-            \node (nn) [process, below=of sample] {\textbf{Meso4 CNN} \\ (Feature Extraction)};
+            \node (nn) [process, below=of sample] {\textbf{Transformer Model} \\ (Feature Extraction)};
             \node (agg) [process, below=of nn] {\textbf{Sigmoid Activation} \\ (Probability Score)};
             \node (dec) [decision, below=of agg] {\textbf{Mean} \\ $> 0.50$?};
             
@@ -175,13 +175,13 @@
 
 % ==================== COLUMN 3 ====================
 \begin{column}{.31\paperwidth}
-\begin{block}{Mesoscopic Artifact Detection}
+\begin{block}{Attention-Based Artifact Detection}
     \vspace{1cm}
     \begin{center}
-        \includegraphics[width=0.9\linewidth]{concept.jpg}
+        \includegraphics[width=0.9\linewidth]{sleek_concept.jpg}
     \end{center}
     \vspace{1cm}
-    \centering \Large \textit{Unlike macroscopic facial analysis, Meso4 targets sub-pixel blending edges and boundary warping where generators fail.}
+    \centering \Large \textit{Unlike macroscopic facial analysis, our Transformer-based model targets subtle spatial-temporal inconsistencies and boundary warping where generators fail.}
     \vspace{1cm}
 \end{block}
 
