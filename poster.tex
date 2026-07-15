@@ -4,11 +4,9 @@
 \usepackage[T1]{fontenc}
 \usepackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
-
 \usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning, shadows}
-
 % --- ULTIMATE CYBERPUNK NEON COLORS ---
 \definecolor{bgdark}{RGB}{5, 10, 20}         % Deep space black
 \definecolor{bgblock}{RGB}{15, 22, 38}        % Dark cyber panel
@@ -18,7 +16,6 @@
 \definecolor{techred}{RGB}{255, 0, 50}       % Alert Red
 \definecolor{titletext}{RGB}{255, 255, 255}   % Pure white text
 \definecolor{subtext}{RGB}{180, 200, 220}     % Muted icy blue text
-
 % --- THEME & COLORS ---
 \usetheme{boxes}
 \setbeamercolor{background canvas}{bg=bgdark}
@@ -26,35 +23,32 @@
 \setbeamercolor{title in headline}{fg=neoncyan}
 \setbeamercolor{author in headline}{fg=titletext}
 \setbeamercolor{institute in headline}{fg=subtext}
-
 \setbeamercolor{block title}{fg=bgdark, bg=neoncyan}
 \setbeamercolor{block body}{fg=titletext, bg=bgblock}
 \setbeamercolor{item}{fg=neoncyan}
-
 % --- HEADER SETUP ---
 \setbeamertemplate{headline}{
   \leavevmode
-  \begin{columns}[c]
+  \begin{columns}
     \begin{column}{.1\paperwidth}
     \end{column}
-    \begin{column}{.75\paperwidth}
-      \vskip2.5cm
+    \begin{column}{.7\paperwidth}
+      \vskip2cm
       \centering
-      \usebeamercolor{title in headline}{\color{fg}\textbf{\fontsize{90}{115}\selectfont \inserttitle}\\[2ex]}
+      \usebeamercolor{title in headline}{\color{fg}\textbf{\fontsize{90}{110}\selectfont \inserttitle}\\[1ex]}
       \vskip1cm
-      \usebeamercolor{author in headline}{\color{fg}\LARGE{\textbf{\insertauthor}}\\[1.5ex]}
-      \usebeamercolor{institute in headline}{\color{fg}\Large{\insertinstitute}\\[1ex]}
-      \vskip1.5cm
+      \usebeamercolor{author in headline}{\color{fg}\Large{\insertauthor}\\[1ex]}
+      \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[1ex]}
+      \vskip1cm
     \end{column}
-    \begin{column}{.15\paperwidth}
+    \begin{column}{.2\paperwidth}
       \centering
-      \includegraphics[width=0.8\linewidth,keepaspectratio]{logo.jpeg}
+      \includegraphics[height=12cm,keepaspectratio]{logo.jpeg}
     \end{column}
   \end{columns}
-  \vskip1cm
+  \vskip2cm
 }
 \setbeamertemplate{footline}{}
-
 % --- BLOCK STYLING ---
 \setbeamertemplate{block begin}{
   \vskip.75ex
@@ -70,42 +64,30 @@
   \end{beamercolorbox}
   \vskip1cm 
 }
-
 % --- TIKZ FLOWCHART STYLES ---
 \tikzset{
-    process/.style={rectangle, draw=neoncyan, fill=bgdark, text=titletext, very thick, minimum width=8cm, minimum height=2cm, align=center, rounded corners, drop shadow},
-    decision/.style={diamond, draw=neonmagenta, fill=bgdark, text=titletext, very thick, minimum width=3cm, minimum height=3cm, align=center, drop shadow},
-    io/.style={trapezium, trapezium left angle=70, trapezium right angle=110, draw=neongreen, fill=bgdark, text=titletext, very thick, minimum width=8cm, minimum height=2cm, align=center, drop shadow},
+    process/.style={rectangle, draw=neoncyan, fill=bgdark, text=titletext, very thick, minimum width=8cm, minimum height=3cm, align=center, rounded corners, drop shadow},
+    decision/.style={diamond, draw=neonmagenta, fill=bgdark, text=titletext, very thick, minimum width=4cm, minimum height=4cm, align=center, drop shadow},
+    io/.style={trapezium, trapezium left angle=70, trapezium right angle=110, draw=neongreen, fill=bgdark, text=titletext, very thick, minimum width=8cm, minimum height=3cm, align=center, drop shadow},
     arrow/.style={-{Stealth[scale=1.5]}, neoncyan, thick, line width=2.5mm}
 }
-
 \title{NEURALFORENSICS: DEEP LEARNING FOR DEEPFAKE DETECTION}
 \author{Prof. Dr. Shazzad Hosain \quad Dr. Md Adnan Arefeen \quad Nusaiba Al Mullick}
 \institute{Dean of SEPS, NSU \quad $\mid$ \quad Assistant Professor, NSU \quad $\mid$ \quad NSU \\ North South University Cyber Security Center}
-
 \begin{document}
 \begin{frame}[fragile]
 \begin{columns}[T]
-
 % ==================== COLUMN 1 ====================
 \begin{column}{.31\paperwidth}
-
-\begin{block}{Problem Statement: The Deepfake Threat}
-\begin{minipage}[t][28cm][c]{\linewidth}
+\begin{block}{The Deepfake Threat}
     \vspace{0.5cm}
-    \begin{itemize}
-        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{The Context:} Synthetic media threatens digital finance, public discourse, and identity security in Bangladesh.
-        \vspace{0.5cm}
-        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{The Challenge:} Standard security protocols fail against advanced AI threats like MFS e-KYC bypass and political misinformation.
-    \end{itemize}
-    \vspace{1cm}
     \begin{center}
     \resizebox{0.75\linewidth}{!}{
         \begin{tikzpicture}[node distance=1.5cm and 2cm]
             \node (df) [circle, draw=neonmagenta, fill=bgblock, text=white, very thick, minimum size=5cm, align=center, drop shadow] {\Huge \textbf{DEEPFAKES}};
-            \node (threat1) [rectangle, draw=neoncyan, fill=bgdark, text=white, very thick, minimum width=6cm, minimum height=2cm, align=center, above right=of df, xshift=1cm] {\LARGE \textbf{Financial Fraud}};
-            \node (threat2) [rectangle, draw=neoncyan, fill=bgdark, text=white, very thick, minimum width=6cm, minimum height=2cm, align=center, right=of df, xshift=2cm] {\LARGE \textbf{Misinformation}};
-            \node (threat3) [rectangle, draw=neoncyan, fill=bgdark, text=white, very thick, minimum width=6cm, minimum height=2cm, align=center, below right=of df, xshift=1cm] {\LARGE \textbf{Identity Theft}};
+            \node (threat1) [rectangle, draw=neoncyan, fill=bgdark, text=white, very thick, minimum width=6cm, minimum height=2cm, align=center, above right=of df, xshift=1cm] {\LARGE \textbf{Misinformation}};
+            \node (threat2) [rectangle, draw=neoncyan, fill=bgdark, text=white, very thick, minimum width=6cm, minimum height=2cm, align=center, right=of df, xshift=2cm] {\LARGE \textbf{Identity Theft}};
+            \node (threat3) [rectangle, draw=neoncyan, fill=bgdark, text=white, very thick, minimum width=6cm, minimum height=2cm, align=center, below right=of df, xshift=1cm] {\LARGE \textbf{Erosion of Trust}};
             
             \draw [arrow, neonmagenta] (df) -- (threat1);
             \draw [arrow, neonmagenta] (df) -- (threat2);
@@ -113,15 +95,12 @@
         \end{tikzpicture}
     }
     \end{center}
-\end{minipage}
+    \vspace{0.3cm}
 \end{block}
-
-\vspace{1.5cm}
-
 \begin{block}{The Deep Learning Solution}
-\begin{minipage}[t][20cm][c]{\linewidth}
+    \vspace{0.5cm}
     \begin{center}
-    \resizebox{0.85\linewidth}{!}{
+    \resizebox{0.75\linewidth}{!}{
         \begin{tikzpicture}[node distance=1.5cm and 1cm]
             \node (cnn) [rectangle, draw=neongreen, fill=bgblock, text=white, very thick, minimum width=10cm, minimum height=3cm, align=center, drop shadow] {\Huge \textbf{Transformer-Based Model}};
             \node (adv1) [rectangle, draw=neoncyan, fill=bgdark, text=white, very thick, minimum width=5cm, minimum height=2cm, align=center, below left=1.5cm and -2cm of cnn] {\Large \textbf{Automated Detection}};
@@ -134,29 +113,23 @@
         \end{tikzpicture}
     }
     \end{center}
-\end{minipage}
+    \vspace{0.3cm}
 \end{block}
-
+\begin{block}{Neural Architecture}
+    \vspace{0.3cm}
+    \begin{center}
+        \includegraphics[width=0.65\linewidth]{sleek_diagram.jpg}
+    \end{center}
+    \vspace{0.3cm}
+\end{block}
 \end{column}
-
 % ==================== COLUMN 2 ====================
 \begin{column}{.31\paperwidth}
-
-\begin{block}{Neural Architecture}
-\begin{minipage}[t][28cm][c]{\linewidth}
-    \begin{center}
-        \includegraphics[height=25cm,keepaspectratio]{sleek_diagram.jpg}
-    \end{center}
-\end{minipage}
-\end{block}
-
-\vspace{1.5cm}
-
 \begin{block}{AI Inference Pipeline}
-\begin{minipage}[t][20cm][c]{\linewidth}
+    \vspace{0.5cm}
     \begin{center}
-    \resizebox{0.85\linewidth}{!}{
-        \begin{tikzpicture}[node distance=1.5cm and 2cm]
+    \resizebox{0.8\linewidth}{!}{
+        \begin{tikzpicture}[node distance=2.5cm and 2cm]
             \node (in) [io] {\textbf{Video Input} \\ (Raw Stream)};
             \node (sample) [process, below=of in] {\textbf{Frame Extraction} \\ (12 Distinct Frames)};
             \node (nn) [process, below=of sample] {\textbf{Transformer Model} \\ (Feature Extraction)};
@@ -175,41 +148,43 @@
         \end{tikzpicture}
     }
     \end{center}
-\end{minipage}
+    \vspace{0.5cm}
 \end{block}
-
+\begin{block}{Real-Time Artifact Localization}
+    \vspace{0.3cm}
+    \begin{center}
+        \includegraphics[width=0.7\linewidth]{heatmap.jpg}
+    \end{center}
+    \vspace{0.3cm}
+\end{block}
 \end{column}
-
 % ==================== COLUMN 3 ====================
 \begin{column}{.31\paperwidth}
-
-\begin{block}{Artifact Detection \& Localization}
-\begin{minipage}[t][28cm][c]{\linewidth}
+\begin{block}{Attention-Based Artifact Detection}
+    \vspace{0.5cm}
     \begin{center}
-        \includegraphics[height=18cm,keepaspectratio]{sleek_concept.jpg}\hspace{1cm}
-        \includegraphics[height=18cm,keepaspectratio]{heatmap.jpg}
+        \includegraphics[width=0.75\linewidth]{sleek_concept.jpg}
     \end{center}
-    \vspace{1cm}
+    \vspace{0.5cm}
     \centering \Large \textit{Unlike macroscopic facial analysis, our Transformer-based model targets subtle spatial-temporal inconsistencies and boundary warping where generators fail.}
-\end{minipage}
+    \vspace{0.5cm}
 \end{block}
-
-\vspace{1.5cm}
-
 \begin{block}{Impact \& Future Scope}
-\begin{minipage}[t][20cm][c]{\linewidth}
-    \begin{itemize}
-        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Lightweight Model:} Resource-efficient proprietary model for mobile edge devices.
-        \vspace{1cm}
-        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Localized Threats:} Combating MFS e-KYC bypass, official impersonation, and fraudulent loans.
-        \vspace{1cm}
-        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Multimodal Expansion:} Fusing audio-video analysis to detect coordinated scams.
-    \end{itemize}
-\end{minipage}
+    \vspace{0.3cm}
+    \begin{center}
+    \resizebox{0.8\linewidth}{!}{
+        \begin{tikzpicture}[node distance=1.5cm and 0cm]
+            \node (trust) [rectangle, draw=neoncyan, fill=bgblock, text=white, very thick, minimum width=15cm, minimum height=3cm, align=center, drop shadow] {\Huge \textbf{Restoring Digital Trust} \\ \Large Empowering journalists to verify media authenticity.};
+            
+            \node (future) [rectangle, draw=neonmagenta, fill=bgblock, text=white, very thick, minimum width=15cm, minimum height=3cm, align=center, drop shadow, below=1cm of trust] {\Huge \textbf{The Road Ahead} \\ \Large Expanding to Multimodal Audio/Visual Detection.};
+            
+            \draw [arrow, neoncyan] (trust) -- (future);
+        \end{tikzpicture}
+    }
+    \end{center}
+    \vspace{0.3cm}
 \end{block}
-
 \end{column}
-
 \end{columns}
 \end{frame}
 \end{document}
