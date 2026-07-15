@@ -34,24 +34,24 @@
 % --- HEADER SETUP ---
 \setbeamertemplate{headline}{
   \leavevmode
-  \begin{columns}
+  \begin{columns}[c]
     \begin{column}{.1\paperwidth}
     \end{column}
-    \begin{column}{.7\paperwidth}
-      \vskip2cm
+    \begin{column}{.75\paperwidth}
+      \vskip2.5cm
       \centering
-      \usebeamercolor{title in headline}{\color{fg}\textbf{\fontsize{60}{80}\selectfont \inserttitle}\\[2ex]}
-      \vskip1.5cm
-      \usebeamercolor{author in headline}{\color{fg}\huge{\textbf{\insertauthor}}\\[1.5ex]}
+      \usebeamercolor{title in headline}{\color{fg}\textbf{\fontsize{90}{115}\selectfont \inserttitle}\\[2ex]}
+      \vskip1cm
+      \usebeamercolor{author in headline}{\color{fg}\LARGE{\textbf{\insertauthor}}\\[1.5ex]}
       \usebeamercolor{institute in headline}{\color{fg}\Large{\insertinstitute}\\[1ex]}
       \vskip1.5cm
     \end{column}
-    \begin{column}{.2\paperwidth}
-      \flushright
-      \includegraphics[height=8cm,keepaspectratio]{logo.jpeg}\hspace*{2cm}
+    \begin{column}{.15\paperwidth}
+      \centering
+      \includegraphics[width=0.8\linewidth,keepaspectratio]{logo.jpeg}
     \end{column}
   \end{columns}
-  \vskip2cm
+  \vskip1cm
 }
 \setbeamertemplate{footline}{}
 
@@ -89,16 +89,18 @@
 
 % ==================== COLUMN 1 ====================
 \begin{column}{.31\paperwidth}
+
 \begin{block}{Problem Statement: The Deepfake Threat}
-    \vspace{0.3cm}
+\begin{minipage}[t][28cm][c]{\linewidth}
+    \vspace{0.5cm}
     \begin{itemize}
         \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{The Context:} Synthetic media threatens digital finance, public discourse, and identity security in Bangladesh.
-        \vspace{0.2cm}
+        \vspace{0.5cm}
         \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{The Challenge:} Standard security protocols fail against advanced AI threats like MFS e-KYC bypass and political misinformation.
     \end{itemize}
-    \vspace{0.3cm}
+    \vspace{1cm}
     \begin{center}
-    \resizebox{0.65\linewidth}{!}{
+    \resizebox{0.75\linewidth}{!}{
         \begin{tikzpicture}[node distance=1.5cm and 2cm]
             \node (df) [circle, draw=neonmagenta, fill=bgblock, text=white, very thick, minimum size=5cm, align=center, drop shadow] {\Huge \textbf{DEEPFAKES}};
             \node (threat1) [rectangle, draw=neoncyan, fill=bgdark, text=white, very thick, minimum width=6cm, minimum height=2cm, align=center, above right=of df, xshift=1cm] {\LARGE \textbf{Financial Fraud}};
@@ -111,13 +113,15 @@
         \end{tikzpicture}
     }
     \end{center}
-    \vspace{0.3cm}
+\end{minipage}
 \end{block}
 
+\vspace{1.5cm}
+
 \begin{block}{The Deep Learning Solution}
-    \vspace{0.3cm}
+\begin{minipage}[t][20cm][c]{\linewidth}
     \begin{center}
-    \resizebox{0.8\linewidth}{!}{
+    \resizebox{0.85\linewidth}{!}{
         \begin{tikzpicture}[node distance=1.5cm and 1cm]
             \node (cnn) [rectangle, draw=neongreen, fill=bgblock, text=white, very thick, minimum width=10cm, minimum height=3cm, align=center, drop shadow] {\Huge \textbf{Transformer-Based Model}};
             \node (adv1) [rectangle, draw=neoncyan, fill=bgdark, text=white, very thick, minimum width=5cm, minimum height=2cm, align=center, below left=1.5cm and -2cm of cnn] {\Large \textbf{Automated Detection}};
@@ -130,32 +134,28 @@
         \end{tikzpicture}
     }
     \end{center}
-    \vspace{0.3cm}
+\end{minipage}
 \end{block}
 
-\begin{block}{Real-Time Artifact Localization}
-    \vspace{0.3cm}
-    \begin{center}
-        \includegraphics[width=0.75\linewidth]{heatmap.jpg}
-    \end{center}
-    \vspace{0.3cm}
-\end{block}
 \end{column}
 
 % ==================== COLUMN 2 ====================
 \begin{column}{.31\paperwidth}
+
 \begin{block}{Neural Architecture}
-    \vspace{0.3cm}
+\begin{minipage}[t][28cm][c]{\linewidth}
     \begin{center}
-        \includegraphics[width=0.7\linewidth]{sleek_diagram.jpg}
+        \includegraphics[height=25cm,keepaspectratio]{sleek_diagram.jpg}
     \end{center}
-    \vspace{0.3cm}
+\end{minipage}
 \end{block}
 
+\vspace{1.5cm}
+
 \begin{block}{AI Inference Pipeline}
-    \vspace{0.3cm}
+\begin{minipage}[t][20cm][c]{\linewidth}
     \begin{center}
-    \resizebox{0.8\linewidth}{!}{
+    \resizebox{0.85\linewidth}{!}{
         \begin{tikzpicture}[node distance=1.5cm and 2cm]
             \node (in) [io] {\textbf{Video Input} \\ (Raw Stream)};
             \node (sample) [process, below=of in] {\textbf{Frame Extraction} \\ (12 Distinct Frames)};
@@ -175,33 +175,39 @@
         \end{tikzpicture}
     }
     \end{center}
-    \vspace{0.3cm}
+\end{minipage}
 \end{block}
+
 \end{column}
 
 % ==================== COLUMN 3 ====================
 \begin{column}{.31\paperwidth}
-\begin{block}{Attention-Based Artifact Detection}
-    \vspace{0.3cm}
+
+\begin{block}{Artifact Detection \& Localization}
+\begin{minipage}[t][28cm][c]{\linewidth}
     \begin{center}
-        \includegraphics[width=0.7\linewidth]{sleek_concept.jpg}
+        \includegraphics[height=18cm,keepaspectratio]{sleek_concept.jpg}\hspace{1cm}
+        \includegraphics[height=18cm,keepaspectratio]{heatmap.jpg}
     \end{center}
-    \vspace{0.3cm}
+    \vspace{1cm}
     \centering \Large \textit{Unlike macroscopic facial analysis, our Transformer-based model targets subtle spatial-temporal inconsistencies and boundary warping where generators fail.}
-    \vspace{0.5cm}
+\end{minipage}
 \end{block}
 
+\vspace{1.5cm}
+
 \begin{block}{Impact \& Future Scope}
-    \vspace{0.3cm}
+\begin{minipage}[t][20cm][c]{\linewidth}
     \begin{itemize}
         \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Lightweight Model:} Resource-efficient proprietary model for mobile edge devices.
-        \vspace{0.3cm}
+        \vspace{1cm}
         \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Localized Threats:} Combating MFS e-KYC bypass, official impersonation, and fraudulent loans.
-        \vspace{0.3cm}
+        \vspace{1cm}
         \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Multimodal Expansion:} Fusing audio-video analysis to detect coordinated scams.
     \end{itemize}
-    \vspace{0.3cm}
+\end{minipage}
 \end{block}
+
 \end{column}
 
 \end{columns}
