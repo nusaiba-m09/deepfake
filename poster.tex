@@ -33,7 +33,7 @@
     \begin{column}{.1\paperwidth}
     \end{column}
     \begin{column}{.75\paperwidth}
-      \vskip2cm
+      \vskip2.5cm
       \centering
       \usebeamercolor{title in headline}{\color{fg}\textbf{\fontsize{90}{110}\selectfont \inserttitle}\\[1ex]}
       \vskip1cm
@@ -80,21 +80,17 @@
 % ==================== COLUMN 1 ====================
 \begin{column}{.31\paperwidth}
 
-\begin{block}{Problem Statement: The Deepfake Threat}
-\begin{minipage}[t][22cm][c]{\linewidth}
+\begin{block}{The Deepfake Threat \& Solution}
+\begin{minipage}[t][32cm][c]{\linewidth}
     \vspace{0.5cm}
     \begin{itemize}
-        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{The Context:} Rapid adoption of Mobile Financial Services (MFS) like bKash and Nagad has introduced severe vulnerabilities in Bangladesh.
-        \vspace{1cm}
-        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{The Challenge:} Standard security protocols fail against advanced AI threats. Deepfakes are actively used to bypass e-KYC liveness detection and impersonate officials.
-        \vspace{1cm}
-        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{The Impact:} Conventional biometric checks are no longer sufficient against hyper-realistic synthetic media, leading to massive financial scams.
+        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{MFS e-KYC Bypass:} Fraudsters exploit synthetic media to bypass liveness checks in bKash, Nagad, and other digital wallets.
+        \vspace{0.5cm}
+        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Official Impersonation:} AI-generated videos impersonate officials and executives for targeted financial scams.
+        \vspace{0.5cm}
+        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Political Misinformation:} Deepfakes manipulate public discourse and erode trust during critical national events.
     \end{itemize}
-\end{minipage}
-\end{block}
-
-\begin{block}{The Deep Learning Solution}
-\begin{minipage}[t][21cm][c]{\linewidth}
+    \vspace{1.5cm}
     \begin{center}
     \resizebox{0.8\linewidth}{!}{
         \begin{tikzpicture}[node distance=1.5cm and 1cm]
@@ -113,9 +109,9 @@
 \end{block}
 
 \begin{block}{Neural Architecture}
-\begin{minipage}[t][20cm][c]{\linewidth}
+\begin{minipage}[t][31cm][c]{\linewidth}
     \begin{center}
-        \includegraphics[height=18cm,keepaspectratio]{sleek_diagram.jpg}
+        \includegraphics[height=28cm,keepaspectratio]{sleek_diagram.jpg}
     \end{center}
 \end{minipage}
 \end{block}
@@ -125,25 +121,25 @@
 \begin{column}{.31\paperwidth}
 
 \begin{block}{AI Inference Pipeline}
-\begin{minipage}[t][22cm][c]{\linewidth}
+\begin{minipage}[t][32cm][c]{\linewidth}
     \begin{center}
-    \resizebox{0.85\linewidth}{!}{
-        \begin{tikzpicture}[node distance=1.5cm and 2cm]
+    \resizebox{0.95\linewidth}{!}{
+        \begin{tikzpicture}[node distance=3cm and 2cm]
             \node (in) [io] {\textbf{Video Input} \\ (Raw Stream)};
             \node (sample) [process, below=of in] {\textbf{Frame Extraction} \\ (12 Distinct Frames)};
             \node (nn) [process, below=of sample] {\textbf{Transformer Model} \\ (Feature Extraction)};
             \node (agg) [process, below=of nn] {\textbf{Sigmoid Activation} \\ (Probability Score)};
             \node (dec) [decision, below=of agg] {\textbf{Mean} \\ $> 0.50$?};
             
-            \node (fake) [io, right=of dec, draw=techred, text=techred, xshift=1cm] {\huge \textbf{SYNTHETIC}};
-            \node (real) [io, left=of dec, draw=neongreen, text=neongreen, xshift=-1cm] {\huge \textbf{AUTHENTIC}};
+            \node (fake) [io, right=of dec, draw=techred, text=techred, xshift=1.5cm] {\huge \textbf{SYNTHETIC}};
+            \node (real) [io, left=of dec, draw=neongreen, text=neongreen, xshift=-1.5cm] {\huge \textbf{AUTHENTIC}};
             
             \draw [arrow] (in) -- (sample);
             \draw [arrow] (sample) -- (nn);
             \draw [arrow] (nn) -- (agg);
             \draw [arrow] (agg) -- (dec);
-            \draw [arrow, techred] (dec) -- node[anchor=south, yshift=0.2cm, text=titletext] {\LARGE \textbf{Yes}} (fake);
-            \draw [arrow, neongreen] (dec) -- node[anchor=south, yshift=0.2cm, text=titletext] {\LARGE \textbf{No}} (real);
+            \draw [arrow, techred] (dec) -- node[anchor=south, yshift=0.3cm, text=titletext] {\LARGE \textbf{Yes}} (fake);
+            \draw [arrow, neongreen] (dec) -- node[anchor=south, yshift=0.3cm, text=titletext] {\LARGE \textbf{No}} (real);
         \end{tikzpicture}
     }
     \end{center}
@@ -151,21 +147,10 @@
 \end{block}
 
 \begin{block}{Real-Time Artifact Localization}
-\begin{minipage}[t][21cm][c]{\linewidth}
+\begin{minipage}[t][31cm][c]{\linewidth}
     \begin{center}
-        \includegraphics[height=18cm,keepaspectratio]{heatmap.jpg}
+        \includegraphics[height=28cm,keepaspectratio]{heatmap.jpg}
     \end{center}
-\end{minipage}
-\end{block}
-
-\begin{block}{Model Training \& Dataset}
-\begin{minipage}[t][20cm][c]{\linewidth}
-    \vspace{0.5cm}
-    \begin{itemize}
-        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Diverse Corpus:} Trained on a massive, diverse corpus of authentic and synthetic faces, including localized datasets representing South Asian demographics.
-        \vspace{1cm}
-        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Robustness:} Utilizes adversarial training techniques to ensure robustness against evolving generator networks and zero-day deepfake variants.
-    \end{itemize}
 \end{minipage}
 \end{block}
 
@@ -174,39 +159,28 @@
 \begin{column}{.31\paperwidth}
 
 \begin{block}{Attention-Based Artifact Detection}
-\begin{minipage}[t][22cm][c]{\linewidth}
+\begin{minipage}[t][32cm][c]{\linewidth}
     \begin{center}
-        \includegraphics[height=15cm,keepaspectratio]{sleek_concept.jpg}
+        \includegraphics[height=22cm,keepaspectratio]{sleek_concept.jpg}
     \end{center}
-    \vspace{1cm}
+    \vspace{1.5cm}
     \centering \Large \textit{Unlike macroscopic facial analysis, our Transformer-based model targets subtle spatial-temporal inconsistencies and boundary warping where generators fail.}
 \end{minipage}
 \end{block}
 
 \begin{block}{Impact \& Future Scope}
-\begin{minipage}[t][21cm][c]{\linewidth}
+\begin{minipage}[t][31cm][c]{\linewidth}
     \begin{center}
-    \resizebox{0.85\linewidth}{!}{
-        \begin{tikzpicture}[node distance=1.5cm and 0cm]
-            \node (trust) [rectangle, draw=neoncyan, fill=bgblock, text=white, very thick, minimum width=15cm, minimum height=3cm, align=center, drop shadow] {\Huge \textbf{Restoring Digital Trust} \\ \Large Empowering journalists to verify media authenticity.};
+    \resizebox{0.9\linewidth}{!}{
+        \begin{tikzpicture}[node distance=3cm and 0cm]
+            \node (trust) [rectangle, draw=neoncyan, fill=bgblock, text=white, very thick, minimum width=15cm, minimum height=4cm, align=center, drop shadow] {\Huge \textbf{Restoring Digital Trust} \\ \Large Empowering journalists to verify media authenticity.};
             
-            \node (future) [rectangle, draw=neonmagenta, fill=bgblock, text=white, very thick, minimum width=15cm, minimum height=3cm, align=center, drop shadow, below=1cm of trust] {\Huge \textbf{The Road Ahead} \\ \Large Expanding to Multimodal Audio/Visual Detection.};
+            \node (future) [rectangle, draw=neonmagenta, fill=bgblock, text=white, very thick, minimum width=15cm, minimum height=4cm, align=center, drop shadow, below=2cm of trust] {\Huge \textbf{The Road Ahead} \\ \Large Expanding to Multimodal Audio/Visual Detection.};
             
             \draw [arrow, neoncyan] (trust) -- (future);
         \end{tikzpicture}
     }
     \end{center}
-\end{minipage}
-\end{block}
-
-\begin{block}{Deployment Strategy}
-\begin{minipage}[t][20cm][c]{\linewidth}
-    \vspace{0.5cm}
-    \begin{itemize}
-        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Edge Computing:} Targeting deployment directly on mobile edge devices for real-time verification during e-KYC processes.
-        \vspace{1cm}
-        \item[\textcolor{neoncyan}{\textbf{>}}] \Large \textbf{Low Latency:} The lightweight model architecture ensures high-throughput inference with minimal latency, securing digital finance infrastructure immediately at the point of access.
-    \end{itemize}
 \end{minipage}
 \end{block}
 
