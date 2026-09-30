@@ -1,5 +1,13 @@
 .DS_Store
+.vendor/.cache/
+.vendor/.yolo/
 .deps/
 .models/
 .vendor/
 NSU_Demo_Videos/
+node_modules/
+scratch/
+server.log
+*.mp4
+Nusaiba_Al_Mollick_Academic_CV_and_Research_Evidence*.docx
+Screenshot*.png

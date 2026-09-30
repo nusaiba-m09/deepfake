@@ -7,196 +7,353 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Chakra+Petch:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=20260713-responsive-3" />
+    <link rel="stylesheet" href="style.css?v=20260814-v2" />
   </head>
   <body>
-    <div class="app-shell app-state-neutral" id="appShell">
-      <div class="ambient-grid"></div>
-      <div class="ambient-aurora ambient-aurora-left" aria-hidden="true"></div>
-      <div class="ambient-aurora ambient-aurora-right" aria-hidden="true"></div>
+    <div class="shell" id="appShell">
+      <div class="ambient-blob blob-a" aria-hidden="true"></div>
+      <div class="ambient-blob blob-b" aria-hidden="true"></div>
+      <div class="ambient-grid" aria-hidden="true"></div>
 
-      <header class="hero panel">
-        <div class="hero-copy-block">
-          <p class="eyebrow">North South University // Cyber Security Research Area</p>
-          <h1>NeuralForensics NSU // Cyber Lab</h1>
-          <p class="hero-copy">
-            Forensic detection of manipulated identity media using biometric, temporal, and
-            generative anomaly signals across live camera frames and uploaded video evidence.
-          </p>
-          <div class="hero-badges">
-            <span class="badge" id="modeBadge">FORENSIC DETECTION</span>
-            <span class="badge badge-outline" id="statusBadge">READY</span>
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">NF</span>
+          <div class="brand-text">
+            <strong>NeuralForensics</strong>
+            <small>NSU Cyber Lab</small>
           </div>
         </div>
 
-        <div class="hero-visual" aria-hidden="true">
-          <div class="visual-ring ring-outer"></div>
-          <div class="visual-ring ring-mid"></div>
-          <div class="visual-ring ring-inner"></div>
-          <div class="face-grid">
-            <span class="face-line line-1"></span>
-            <span class="face-line line-2"></span>
-            <span class="face-line line-3"></span>
-            <span class="face-line line-4"></span>
-            <span class="face-line line-5"></span>
-            <span class="face-node node-1"></span>
-            <span class="face-node node-2"></span>
-            <span class="face-node node-3"></span>
-            <span class="face-node node-4"></span>
-            <span class="face-node node-5"></span>
-            <span class="face-node node-6"></span>
-          </div>
+        <nav class="main-nav" id="mainNav">
+          <button class="nav-item is-active" data-page="analyze">Analyze</button>
+          <button class="nav-item" data-page="results">Results</button>
+          <button class="nav-item" data-page="report">AI Report</button>
+        </nav>
+
+        <div class="top-status">
+          <span class="status-badge is-idle" id="statusBadge">READY</span>
+          <span class="engine-badge" id="modeBadge">SENTINEL-X EXPERT MODEL</span>
         </div>
       </header>
 
-      <main class="dashboard">
-        <section class="panel media-panel">
-          <div class="panel-head">
-            <div>
-              <p class="panel-kicker">Neural Analysis Viewport</p>
-              <h2 id="activeSourceTitle">Select an Input Source</h2>
-            </div>
-            <span class="viewport-state" id="viewportState">STANDBY</span>
+      <main class="content">
+        <section class="page is-active" id="page-analyze" data-page="analyze">
+          <div class="card intro">
+            <h1>Deepfake &amp; AI Media Analyzer</h1>
+            <p>
+              Select a source below, run the scan, and see whether the media shows
+              signs of AI generation or digital manipulation. Your deepfake score,
+              human detection, and the written forensic report appear in the menu above.
+            </p>
+            <ol class="steps">
+              <li><b>1</b> Choose a source</li>
+              <li><b>2</b> Run the scan</li>
+              <li><b>3</b> Review Results &amp; Report</li>
+            </ol>
           </div>
 
-          <div class="media-stage" id="mediaStage">
-            <div class="stage-corners" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
+          <div class="source-grid">
+            <section class="source-card card" data-source="camera">
+              <header>
+                <span class="icon">◉</span>
+                <div>
+                  <h3>Live Camera</h3>
+                  <p>Real-time capture</p>
+                </div>
+              </header>
+              <button class="btn secondary" id="enableCameraButton">Enable Camera</button>
+              <p class="hint" id="cameraStatus">Camera is off.</p>
+            </section>
+
+            <section class="source-card card" data-source="file">
+              <header>
+                <span class="icon">▤</span>
+                <div>
+                  <h3>Upload Media</h3>
+                  <p>Video or image file</p>
+                </div>
+              </header>
+              <label class="drop" id="dropZone">
+                <input type="file" id="fileInput" accept="video/mp4,video/quicktime,video/webm,image/*" hidden />
+                <span class="drop-title">Click or drop a file</span>
+                <span class="drop-meta" id="fileMeta">MP4 · WebM · JPG · PNG · WebP</span>
+              </label>
+              <button class="btn secondary compact" id="clearFileButton" hidden>Remove file</button>
+            </section>
+
+            <section class="source-card card" data-source="url">
+              <header>
+                <span class="icon">↗</span>
+                <div>
+                  <h3>URL Analysis</h3>
+                  <p>YouTube &amp; social links</p>
+                </div>
+              </header>
+              <input
+                class="url-input"
+                id="urlInput"
+                type="url"
+                placeholder="Paste YouTube, TikTok, Instagram, X or any media link..."
+              />
+              <button class="btn secondary" id="analyzeUrlButton">Fetch &amp; Analyze</button>
+              <p class="hint" id="urlStatus">Works with YouTube, TikTok, Instagram, Facebook, X and direct media links.</p>
+            </section>
+          </div>
+
+          <section class="card stage">
+            <div class="stage-head">
+              <h2 id="activeSourceTitle">No source selected</h2>
+              <span class="viewport-state is-idle" id="viewportState">STANDBY</span>
             </div>
-            <div class="face-target" aria-hidden="true">
-              <span class="target-axis target-axis-x"></span>
-              <span class="target-axis target-axis-y"></span>
-              <span class="target-point point-a"></span>
-              <span class="target-point point-b"></span>
-              <span class="target-point point-c"></span>
-              <span class="target-point point-d"></span>
-            </div>
-            <div class="stage-telemetry telemetry-top" aria-hidden="true">
-              <span>FACE REGION // LOCK</span><span>TEMPORAL BUFFER // 07</span>
-            </div>
-            <div class="stage-telemetry telemetry-bottom" aria-hidden="true">
-              <span>LUMA</span><i></i><span>TEXTURE</span><i></i><span>MOTION</span><i></i>
-            </div>
-            <video id="webcamVideo" autoplay muted playsinline hidden></video>
-            <video id="fileVideo" controls playsinline hidden></video>
-            <div class="stage-placeholder" id="stagePlaceholder">
-              <p>Detection surface armed.</p>
-              <span>Authorize the camera feed or load MP4 evidence to begin analysis.</span>
-            </div>
-            <div class="scan-line" id="scanLine" aria-hidden="true"></div>
-            <div class="terminal-overlay" id="terminalOverlay" aria-live="polite"></div>
-            <section class="scan-result" id="verdictPanel" aria-live="polite">
-              <div class="result-status">
-                <span class="result-index">SCAN RESULT</span>
-                <h2 id="verdictHeadline">Awaiting Scan</h2>
-                <p class="verdict-copy" id="verdictCopy">
-                  Select a source and execute the scan. The verdict will appear here.
-                </p>
+            <div class="stage-media" id="mediaStage">
+              <video id="webcamVideo" autoplay muted playsinline hidden></video>
+              <video id="fileVideo" controls playsinline hidden></video>
+              <div class="stage-placeholder" id="stagePlaceholder">
+                <div class="depth-mark"></div>
+                <p>Analysis surface ready.</p>
+                <span>Pick a source above, then run the scan.</span>
               </div>
-              <dl class="metrics result-metrics">
+              <div class="terminal" id="terminalOverlay"></div>
+            </div>
+            <div class="stage-actions">
+              <button class="btn primary run" id="analyzeButton" disabled>Run Analysis</button>
+              <p class="status-line" id="activityStatus">System ready — choose a source to begin.</p>
+            </div>
+          </section>
+        </section>
+
+        <section class="page" id="page-results" data-page="results">
+          <div class="results-banner" id="resultsNoticeBanner" hidden style="background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 12px; padding: 12px 18px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span class="live-dot" style="background: #10b981; box-shadow: 0 0 10px #10b981;"></span>
+              <span id="resultsNoticeText" style="font-size: 0.92rem; color: #ecfdf5;"><b>Analysis Complete:</b> Verdict, telemetry, and forensic attention heatmap are ready below.</span>
+            </div>
+            <button class="btn secondary compact" id="bannerGradcamBtn" style="white-space: nowrap; font-size: 0.82rem; padding: 6px 14px; border-color: #10b981; color: #a7f3d0;">
+              &#128300; Inspect Heatmap
+            </button>
+          </div>
+
+          <div class="card verdict" id="verdictCard">
+            <div class="verdict-status" id="verdictStatus" data-state="idle">
+              <span class="verdict-kicker">Scan Result</span>
+              <h2 id="verdictHeadline">No scan yet</h2>
+              <p id="verdictCopy">Run an analysis from the Analyze page to see the verdict here.</p>
+            </div>
+            <div class="verdict-score">
+              <div class="score-ring" id="scoreRing">--</div>
+              <span class="score-label">Synthetic Likelihood</span>
+              <button class="btn secondary mt-4" id="viewGradcamBtn" hidden style="margin-top: 1rem; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; border-color: rgba(99, 102, 241, 0.5); background: rgba(99, 102, 241, 0.15);">
+                <span style="font-size: 1.1rem;">&#128300;</span> View Decision Heatmap (Grad-CAM)
+              </button>
+            </div>
+          </div>
+
+          <div class="results-grid">
+            <section class="card telemetry-card">
+              <header class="card-head">
+                <h3>Humans &amp; Activity</h3>
+                <span class="tag" id="humanCountBadge">0</span>
+              </header>
+              <ul class="human-list" id="humanList"></ul>
+              <div class="activity-tags" id="activitiesList"></div>
+
+              <h4 class="subhead">Forensic Telemetry</h4>
+              <dl class="kv">
                 <div>
-                  <dt>Input</dt>
-                  <dd id="metricSource">Awaiting input</dd>
+                  <dt>Laplacian Edge Sharpness</dt>
+                  <dd id="laplacianValue">--</dd>
                 </div>
                 <div>
-                  <dt id="metricScoreLabel">Synthetic Likelihood</dt>
-                  <dd id="metricConfidence">--</dd>
-                </div>
-                <div>
-                  <dt>Analysis Method</dt>
-                  <dd id="metricEngine">Neural Matrix</dd>
+                  <dt>FFT Spectral Attenuation</dt>
+                  <dd id="fftValue">--</dd>
                 </div>
               </dl>
             </section>
+
+            <section class="card summary-card">
+              <header class="card-head"><h3>Source Summary</h3></header>
+              <dl class="kv">
+                <div>
+                  <dt>Analyzed Media</dt>
+                  <dd id="metricSource">--</dd>
+                </div>
+                <div>
+                  <dt>Media Type</dt>
+                  <dd id="metricSrcType">--</dd>
+                </div>
+                <div>
+                  <dt>Frames Sampled</dt>
+                  <dd id="metricFrames">--</dd>
+                </div>
+                <div>
+                  <dt>Analysis Engine</dt>
+                  <dd id="metricEngine">Sentinel-X Expert Engine</dd>
+                </div>
+                <div>
+                  <dt>Confidence</dt>
+                  <dd id="metricConfidence">--</dd>
+                </div>
+              </dl>
+              <button class="btn link" id="gotoReport">View AI Forensic Report &rarr;</button>
+            </section>
           </div>
 
-          <div class="scan-command">
-            <button class="action-button primary scan-button" id="analyzeButton">
-              Select Camera or MP4 First
-            </button>
-            <div class="scan-command-meta">
-              <span>03 // ANALYSIS</span>
-              <p class="activity-status" id="activityStatus">System ready. Select an input source.</p>
+          <!-- Scene-by-Scene Forensic Breakdown & Grad-CAM Analysis -->
+          <section class="card scene-analysis-card" id="sceneAnalysisCard" hidden>
+            <header class="card-head">
+              <div>
+                <span class="verdict-kicker">Temporal &amp; Spatial Forensic Inspection</span>
+                <h3>Scene-by-Scene Forensic Saliency (Grad-CAM)</h3>
+              </div>
+              <span class="tag" id="sceneCountBadge">0 Scenes</span>
+            </header>
+            <p class="scene-subtext">
+              Neural gradient heatmaps mapping focal points and synthetic artifacts across keyframe sequences. Click any scene to inspect high-resolution gradients.
+            </p>
+            <div class="scene-gallery" id="sceneGallery">
+              <!-- Dynamically populated scene cards -->
             </div>
-          </div>
+          </section>
         </section>
 
-        <aside class="sidebar">
-          <section class="panel control-panel">
-            <div class="panel-head compact">
+        <section class="page" id="page-report" data-page="report">
+          <div class="card report">
+            <header class="card-head">
               <div>
-                <p class="panel-kicker">01—02 // Input</p>
-                <h2>Choose Detection Source</h2>
+                <span class="verdict-kicker">Sentinel-X Expert Model Analysis</span>
+                <h2>Written Analysis Report</h2>
               </div>
-            </div>
-            <div class="model-selector" aria-label="Detection model">
-              <button class="model-button is-active" data-model="model1" type="button">
-                Detection Model 1
-              </button>
-              <button class="model-button" data-model="model2" type="button">
-                Detection Model 2
-              </button>
-            </div>
-            <div class="source-console">
-              <section class="source-option" id="liveSourceCard">
-                <div class="source-option-head">
-                  <span class="step-index">01</span>
-                  <div><strong>Live Camera</strong><small>3-second forensic capture</small></div>
-                </div>
-                <button class="action-button secondary" id="enableCameraButton">
-                  Enable Camera
-                </button>
-                <p class="inline-status" id="cameraStatus">Camera is currently off.</p>
-              </section>
-
-              <section class="source-option" id="fileSourceCard">
-                <div class="source-option-head">
-                  <span class="step-index">02</span>
-                  <div><strong>Upload Video</strong><small>MP4 timeline analysis</small></div>
-                </div>
-                <label class="drop-zone" id="dropZone" for="fileInput">
-                  <input id="fileInput" type="file" accept="video/mp4" hidden />
-                  <span class="drop-title">Choose MP4 File</span>
-                  <span class="drop-copy">Click here or drop video</span>
-                  <span class="drop-meta" id="fileMeta">No file selected</span>
-                </label>
-                <button class="action-button secondary" id="clearFileButton" hidden>
-                  Remove Video
-                </button>
-              </section>
+            </header>
+            <div class="report-meta" id="reportMeta"></div>
+            <div class="report-body" id="explanationContent">
+              <p class="placeholder">
+                The AI-generated explanation will appear here after you run an analysis.
+              </p>
             </div>
 
-            <section class="sample-library">
-              <div class="sample-library-head">
-                <span>Verification Samples</span>
-                <small>Known synthetic videos</small>
+            <!-- Report Scene Evidence Gallery -->
+            <div class="report-evidence-section" id="reportEvidenceSection" hidden>
+              <h3 class="evidence-title">Keyframe Telemetry &amp; Grad-CAM Saliency Evidence</h3>
+              <p class="evidence-subtitle">Visual gradient proof documenting neural focal activations and edge consistency across keyframes.</p>
+              <div class="report-evidence-grid" id="reportEvidenceGrid">
+                <!-- Dynamically populated report evidence cards -->
               </div>
-              <div class="sample-grid">
-                <button class="sample-button" type="button" data-sample="/NSU_Demo_Videos/01_02__hugging_happy__YVGY8LOK.mp4">
-                  <span>Sample 01</span><small>Facial interaction</small>
-                </button>
-                <button class="sample-button" type="button" data-sample="/NSU_Demo_Videos/01_02__meeting_serious__YVGY8LOK.mp4">
-                  <span>Sample 02</span><small>Meeting sequence</small>
-                </button>
-                <button class="sample-button" type="button" data-sample="/NSU_Demo_Videos/01_02__walk_down_hall_angry__YVGY8LOK.mp4">
-                  <span>Sample 03</span><small>Motion sequence</small>
-                </button>
-              </div>
-            </section>
-            <p class="control-copy">
-              Choose one source. The active input is highlighted and shown in the analysis viewport.
-            </p>
-          </section>
-        </aside>
+            </div>
+
+            <button class="btn link" id="gotoAnalyze">&larr; Run another analysis</button>
+          </div>
+        </section>
       </main>
     </div>
 
-    <script src="app.js"></script>
+
+    <!-- Live Fullscreen Camera Mode Overlay -->
+    <div class="camera-overlay" id="cameraFullscreenOverlay" hidden>
+      <div class="camera-hud-top">
+        <div class="camera-hud-brand">
+          <span class="live-dot"></span>
+          <strong>LIVE OPTICAL FEED // SENTINEL-X CYBER LAB</strong>
+        </div>
+        <button class="btn secondary compact exit-cam" id="closeCameraButton">
+          &#10005; Stop Camera
+        </button>
+      </div>
+
+      <div class="camera-feed-container">
+        <video id="fullscreenWebcamVideo" autoplay muted playsinline></video>
+        <div class="hud-frame">
+          <div class="hud-corner top-left"></div>
+          <div class="hud-corner top-right"></div>
+          <div class="hud-corner bottom-left"></div>
+          <div class="hud-corner bottom-right"></div>
+          <div class="hud-reticle"></div>
+          <div class="scan-line"></div>
+        </div>
+        <div class="terminal camera-terminal" id="fullscreenTerminalOverlay"></div>
+      </div>
+
+      <div class="camera-hud-bottom">
+        <div class="hud-status-info">
+          <span class="hud-label">SYSTEM STATE:</span>
+          <span id="fullscreenCameraStatus">Camera active - frame ready for deepfake scan</span>
+        </div>
+        <div class="camera-actions-group" style="display: flex; gap: 12px; align-items: center;">
+          <button class="btn primary run" id="fullscreenAnalyzeButton">
+            Run Deepfake &amp; Activity Scan
+          </button>
+          <button class="btn success" id="fullscreenViewResultsButton" hidden style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; font-weight: 600; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 0 16px rgba(16, 185, 129, 0.45);">
+            &#10003; Analysis Complete &mdash; View Results &amp; Heatmap &rarr;
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grad-CAM Modal -->
+    <div class="modal-overlay" id="gradcamModal" hidden>
+      <div class="modal-card gradcam-modal-card">
+        <header class="modal-head">
+          <div class="brand">
+            <span class="brand-mark" style="font-size: 1rem; width: 32px; height: 32px;">GC</span>
+            <div class="brand-text">
+              <strong id="modalSceneTitle">Decision Saliency Map</strong>
+              <small id="modalSceneSubtitle">PaliGemma-3B &amp; ViT Gradient Attention</small>
+            </div>
+          </div>
+          <div class="modal-head-controls">
+            <!-- View Mode Switcher -->
+            <div class="view-mode-toggle" id="modalViewModeToggle">
+              <button class="mode-btn active" data-mode="heatmap" id="btnModeHeatmap" title="Saliency Heatmap">Heatmap</button>
+              <button class="mode-btn" data-mode="original" id="btnModeOriginal" title="Original Frame">Original</button>
+              <button class="mode-btn" data-mode="split" id="btnModeSplit" title="Side-by-Side Comparison">Split View</button>
+            </div>
+            <button class="btn secondary compact" id="closeGradcamBtn">&#10005;</button>
+          </div>
+        </header>
+
+        <!-- Scene selector pills bar (for multi-scene video / sequence) -->
+        <div class="modal-scene-nav" id="modalSceneNav" hidden>
+          <span class="scene-nav-label">SCENES:</span>
+          <div class="scene-nav-pills" id="modalScenePills"></div>
+        </div>
+
+        <div class="modal-body">
+          <div id="gradcamLoading" class="gradcam-loading">
+            <div class="loader-spinner"></div>
+            <p>Extracting neural gradients...</p>
+          </div>
+          <!-- Single View (Heatmap or Original) -->
+          <div class="gradcam-single-view" id="gradcamSingleView">
+            <img id="gradcamImage" src="" alt="Grad-CAM Heatmap" hidden />
+          </div>
+          <!-- Split View (Side by Side) -->
+          <div class="gradcam-split-view" id="gradcamSplitView" hidden>
+            <div class="split-pane">
+              <span class="split-pane-tag">Original Capture</span>
+              <img id="gradcamSplitOriginal" src="" alt="Original Capture" />
+            </div>
+            <div class="split-pane">
+              <span class="split-pane-tag">Grad-CAM Saliency Map</span>
+              <img id="gradcamSplitHeatmap" src="" alt="Grad-CAM Overlay" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Scene telemetry footer in modal -->
+        <footer class="modal-scene-footer" id="modalSceneFooter">
+          <div class="modal-meta-left">
+            <span class="badge" id="modalSceneVerdict">--</span>
+            <span class="scene-time" id="modalSceneTime">Timestamp: --</span>
+          </div>
+          <div class="modal-meta-right" id="modalSceneCaption">
+            Scene Telemetry: Natural facial boundaries and sensor grain match authentic photographic capture.
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script src="app.js?v=20260925-v4"></script>
   </body>
 </html>
